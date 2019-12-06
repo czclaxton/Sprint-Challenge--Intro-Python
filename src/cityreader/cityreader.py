@@ -31,7 +31,11 @@ def cityreader(cities=[]):
     # `cities` list
     with open("cities.csv", 'r') as csvfile:
         csvreader = csv.reader(csvfile)
-        cities.extend(next(csvreader))
+        next(csvreader)
+
+        for city in csvreader:
+
+            cities.append(City(city[0], float(city[3]), float(city[4])))
     return cities
 
 
@@ -39,7 +43,8 @@ cityreader(cities)
 
 # Print the list of cities (name, lat, lon), 1 record per line.
 for c in cities:
-    print(c)
+    print(f'\n{c.name}, {c.lat}, {c.lon}')
+
 
 # STRETCH GOAL!
 #
