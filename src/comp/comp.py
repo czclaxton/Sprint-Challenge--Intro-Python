@@ -1,5 +1,8 @@
-# The following list comprehension exercises will make use of the 
-# defined Human class. 
+# The following list comprehension exercises will make use of the
+# defined Human class.
+import math
+
+
 class Human:
     def __init__(self, name, age):
         self.name = name
@@ -7,6 +10,7 @@ class Human:
 
     def __repr__(self):
         return f"<Human: {self.name}, {self.age}>"
+
 
 humans = [
     Human("Alice", 29),
@@ -25,29 +29,44 @@ humans = [
 # whose name starts with 'D':
 print("Starts with D:")
 a = []
+for person in humans:
+    if person.name.startswith("D"):
+        a.extend(person.name.split(" "))
 print(a)
 
 # Write a list comprehension that creates a list of names of everyone
 # whose name ends in "e".
 print("Ends with e:")
 b = []
+for person in humans:
+    if person.name.endswith("e"):
+        b.extend(person.name.split(" "))
 print(b)
 
 # Write a list comprehension that creates a list of names of everyone
 # whose name starts with any letter between 'C' and 'G' inclusive.
 print("Starts between C and G, inclusive:")
 c = []
+for person in humans:
+    if 67 <= ord(person.name[0]) >= 71:
+        c.extend(person.name.split(" "))
 print(c)
 
 # Write a list comprehension that creates a list of all the ages plus 10.
 print("Ages plus 10:")
 d = []
+for person in humans:
+    new_age = person.age + 10
+    d.extend([new_age])
 print(d)
 
 # Write a list comprehension that creates a list of strings which are the name
 # joined to the age with a hyphen, for example "David-31", for all humans.
 print("Name hyphen age:")
 e = []
+for person in humans:
+    string = f'{person.name}-{person.age}'
+    e.extend([string])
 print(e)
 
 # Write a list comprehension that creates a list of tuples containing name and
@@ -55,6 +74,9 @@ print(e)
 # inclusive.
 print("Names and ages between 27 and 32:")
 f = []
+for person in humans:
+    if 27 <= person.age <= 32:
+        f.extend([tuple((person.name, person.age))])
 print(f)
 
 # Write a list comprehension that creates a list of new Humans like the old
@@ -62,10 +84,13 @@ print(f)
 # The "humans" list should be unmodified.
 print("All names uppercase:")
 g = []
+for person in humans:
+    g.extend([person.name.upper()])
 print(g)
 
 # Write a list comprehension that contains the square root of all the ages.
 print("Square root of ages:")
-import math
 h = []
+for person in humans:
+    h.extend([person.age**2])
 print(h)
